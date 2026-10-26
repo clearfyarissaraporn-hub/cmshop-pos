@@ -1,5 +1,5 @@
 // ชำดี POS — เปิดได้แม้เน็ตหลุด · หน้าแอปดึงเวอร์ชันใหม่จากเว็บก่อนเสมอ (ข้อมูลร้านอยู่ใน IndexedDB ไม่ได้อยู่ในแคชนี้)
-const CACHE='chamdee-pos-v7-3';
+const CACHE='chamdee-pos-v7-4';
 const CORE=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>Promise.all(CORE.map(u=>fetch(new Request(u,{cache:'reload'})).then(r=>r.ok&&c.put(u,r)).catch(()=>{})))));self.skipWaiting()});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
